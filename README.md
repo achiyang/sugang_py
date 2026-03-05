@@ -52,9 +52,17 @@ playwright install chromium
 
 ## 3. 실행 방법
 
-### 3.1 모듈 실행
+### 3.1 가장 쉬운 실행 (콘솔 엔트리포인트)
 
-직접 모듈로 실행하고 싶다면:
+`pyproject.toml`에 등록된 엔트리포인트가 있다면 아래처럼 실행됩니다.
+
+```bash
+sugang
+```
+
+### 3.2 모듈 실행
+
+엔트리포인트가 환경에 따라 동작하지 않거나, 직접 모듈로 실행하고 싶다면:
 
 ```bash
 python -m sugang_py.main
