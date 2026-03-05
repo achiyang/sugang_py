@@ -11,7 +11,7 @@ from sugang_py.pages.sugang import SugangPage
 from sugang_py.utils.time import wait_until
 
 
-async def run() -> None:
+async def _run() -> None:
     s = load_settings()
 
     async with async_playwright() as p:
@@ -47,5 +47,8 @@ async def run() -> None:
         # 브라우저가 닫히지 않도록 대기
         await asyncio.to_thread(input)
 
+def run():
+    asyncio.run(_run())
+
 if __name__ == "__main__":
-    asyncio.run(run())
+    run()
