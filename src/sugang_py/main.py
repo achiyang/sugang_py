@@ -5,10 +5,10 @@ import asyncio
 from playwright.async_api import async_playwright
 from datetime import timedelta
 
-from config import load_settings
-from pages.login import LoginPage
-from pages.sugang import SugangPage
-from utils.time import wait_until
+from sugang_py.config import load_settings
+from sugang_py.pages.login import LoginPage
+from sugang_py.pages.sugang import SugangPage
+from sugang_py.utils.time import wait_until
 
 
 async def run() -> None:
