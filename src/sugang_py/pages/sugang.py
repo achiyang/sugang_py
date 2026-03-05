@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import datetime
 
 from .base import BasePage
 
@@ -24,9 +23,7 @@ class SugangPage(BasePage):
 
     async def enroll_many(self, codes: list[str], repeat: int, interval_ms: int = 0) -> None:
         length = len(codes)
-        print(datetime.datetime.now())
         for i in range(repeat):
             code = codes[i % length]
             asyncio.create_task(self.enroll(code))
             await asyncio.sleep(interval_ms / 1000.0)
-        print(datetime.datetime.now())
