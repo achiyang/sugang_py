@@ -75,7 +75,7 @@ SUGANG_USER_ID=your_id
 SUGANG_USER_PW=your_password
 
 # ===== 신청할 과목 코드 (쉼표로 구분) =====
-SUBJECT_CODES=ABC123,DEF456,GHI789
+SUGANG_SUBJECT_CODES=ABC123,DEF456,GHI789
 
 # ===== 목표 시작 시각 =====
 # ISO 8601 형식 권장: YYYY-MM-DDTHH:MM:SS
