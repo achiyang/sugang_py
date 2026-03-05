@@ -40,7 +40,8 @@ class Settings:
 
     headless: bool = False
     repeat: int = 50
-    interval_ms: int = 0
+    interval_ms: int = 10
+    advance_ms: int = 0
 
 
 def load_settings() -> Settings:
@@ -53,7 +54,8 @@ def load_settings() -> Settings:
 
     headless = _parse_bool(os.getenv("SUGANG_HEADLESS"), False)
     repeat = _parse_int(os.getenv("SUGANG_REPEAT"), 50)
-    interval_ms = _parse_int(os.getenv("SUGANG_INTERVAL_MS"), 0)
+    interval_ms = _parse_int(os.getenv("SUGANG_INTERVAL_MS"), 10)
+    advance_ms = _parse_int(os.getenv("SUGANG_ADVANCE_MS"), 0)
 
     if not user_id:
         raise ValueError("SUGANG_USER_ID is empty")
@@ -72,4 +74,5 @@ def load_settings() -> Settings:
         headless=headless,
         repeat=repeat,
         interval_ms=interval_ms,
+        advance_ms=advance_ms
     )

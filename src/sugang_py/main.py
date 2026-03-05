@@ -36,7 +36,7 @@ async def run() -> None:
 
             # 3. 시간 대기
             if s.target_at is not None:
-                await wait_until(s.target_at - timedelta(milliseconds=300))
+                await wait_until(s.target_at - timedelta(milliseconds=s.advance_ms))
 
             # 4. 수강신청 패킷 전송
             await sugang.enroll_many(s.subject_codes, s.repeat, s.interval_ms)
