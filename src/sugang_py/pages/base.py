@@ -12,27 +12,24 @@ class BasePage:
 
     def __init__(self, page: Page):
         self.page = page
-        self._main_frame_locator: FrameLocator | None = None
-        self._core_frame_locator: FrameLocator | None = None
-        self._core_frame: Frame | None = None
 
     @property
     def main_frame_locator(self) -> FrameLocator:
-        if self._main_frame_locator is None:
-            self._main_frame_locator = self.page.frame_locator(self.MAIN_FRAME_SELECTOR)
-        return self._main_frame_locator
+        return self.page.frame_locator(self.MAIN_FRAME_SELECTOR)
 
     @property
     def core_frame_locator(self) -> FrameLocator:
-        if self._core_frame_locator is None:
-            self._core_frame_locator = self.main_frame_locator.frame_locator(self.CORE_FRAME_SELECTOR)
-        return self._core_frame_locator
+        return self.main_frame_locator.frame_locator(self.CORE_FRAME_SELECTOR)
+
+    def _get_core_frame(self) -> Frame | None:
+        return self.page.frame(self.CORE_FRAME_NAME)
 
     @property
-    def core_frame(self) -> Frame | None:
-        if self._core_frame is None or self._core_frame.is_detached():
-            self._core_frame = self.page.frame(self.CORE_FRAME_NAME)
-        return self._core_frame
+    def core_frame(self) -> Frame:
+        frame = self._get_core_frame()
+        if frame is None:
+            raise RuntimeError(f"Frame '{self.CORE_FRAME_NAME}' not found")
+        return frame
     
     async def eval_in_core(self, expression: str, arg: Any = None) -> Any:
         return await self.core_frame.evaluate(expression, arg)

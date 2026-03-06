@@ -60,7 +60,7 @@ def load_settings() -> Settings:
     if not user_id:
         raise ValueError("SUGANG_USER_ID is empty")
     if not user_pw:
-        raise ValueError("SUGANG_PASSWORD is empty")
+        raise ValueError("SUGANG_USER_PW is empty")
     if not subject_codes:
         raise ValueError("SUGANG_SUBJECT_CODES is empty")
     if repeat <= 0:
